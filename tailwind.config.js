@@ -15,6 +15,12 @@ export default {
         'primary-dark': '#ff5200',
         'color-brown': '#562504',
         'color-light' : '#f7e1d0'
+      },
+      aspectRatio:{
+        '4/3' : '4 / 3'
+      },
+      screens:{
+        'xs' : '450px'
       }
     },
     fontFamily: {

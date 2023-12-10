@@ -8,11 +8,22 @@ html {
 
 ::-webkit-scrollbar {
   width: 5px;
-  background: transparent;
+  background: #e2e8f0;
   opacity: 10;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ffb000;
+  background-color: #94a3b8;
   border-radius: 10px;
+}
+
+html.dark ::-webkit-scrollbar {
+  width: 5px;
+  background: #1e293b;
+  opacity: 10;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155;
+
 }

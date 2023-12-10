@@ -3,7 +3,7 @@ import heroImage from "../../assets/heroImage.png"
 
 const HeroSection = () => {
     return (
-        <div className="min-h-screen flex gap-12 md:gap-4 flex-col justify-center items-center sm:pb-12" >
+        <div className="min-h-screen flex gap-12 md:gap-4 flex-col justify-center items-center" >
             <div className="max-w-5xl" > <img className="w-full" src={heroImage} alt="image" /></div>
             <div className="text-center" >
                 <h1 className="text-5xl h-16 sm:text-6xl sm:h-20 font-bold inline-block bg-gradient-to-r from-primary-light to-primary-dark text-transparent bg-clip-text" >Neighborgood</h1>
