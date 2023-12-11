@@ -8,7 +8,7 @@ import AboutSection from "./AboutSection"
 const Home = () => {
     return (
         <div className=" w-full bg-white dark:bg-slate-950 transition-all duration-300 ease-linear">
-            <div className="max-w-screen-2xl mx-auto min-h-screen px-4 md:px-10 " >
+            <div className="max-w-screen-2xl mx-auto min-h-screen px-4 md:px-10 overflow-hidden " >
                 <Navbar>
                     <NavbarLink pageLink={true} path={"/"} name="Home" />
                     <NavbarLink pageLink={false} path={"#service"} name="Services" />

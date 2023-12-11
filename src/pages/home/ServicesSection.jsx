@@ -1,11 +1,23 @@
 import SubHeading from '../../components/subHeading/SubHeading'
 import ServiceContainer from './ServiceContainer'
+import { motion } from "framer-motion"
 
 const ServicesSection = () => {
+
+    const containerAni = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.5, duration: 0.5 } }
+    }
+
     return (
-        <div className='py-24' id='service' >
+        <div className='py-24 overflow-hidden' id='service' >
             <SubHeading text="Our" colorText="Services" afterText="" />
-            <div className=' mt-8 grid gap-6 grid-cols-1 md:grid-cols-2'>
+            <motion.div
+                variants={containerAni}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className=' mt-8 grid gap-6 grid-cols-1 md:grid-cols-2'>
                 <ServiceContainer
                     heading="Connect, Discover, Attend: Meet Your Neighbors!"
                     body="Find your perfect match based on shared interests and hobbies, with our interest matching service – because compatibility goes beyond looks!"
@@ -22,7 +34,7 @@ const ServicesSection = () => {
                     heading="Get help around you"
                     body="The platform facilitates carpooling, baby nursing, and food stall discovery, optimizing savings in time and expenses."
                 />
-            </div>
+            </motion.div>
         </div>
     )
 }
