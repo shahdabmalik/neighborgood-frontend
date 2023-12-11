@@ -4,13 +4,16 @@ import ProfileCard from "../../components/profileCard/ProfileCard"
 import SubHeading from "../../components/subHeading/SubHeading"
 
 const Dashboard = () => {
+
+  document.title = "Dashboard - Neighborgood"
+
   return (
-    <div className="w-full bg-white dark:bg-slate-950 transition-all duration-300 ease-linear" >
+    <div className="w-full min-h-screen bg-white dark:bg-slate-950 transition-all duration-300 ease-linear" >
       <Navbar>
         <NavbarLink pageLink={true} path={"/"} name={"Home"} />
         <NavbarLink pageLink={true} path={"/profile"} name={"Profile"} />
       </Navbar>
-      <div className="max-w-screen-2xl mx-auto min-h-screen px-4 md:px-10 py-24" >
+      <div className="max-w-screen-2xl mx-auto px-4 md:px-10 py-24" >
       <SubHeading text="Similar" colorText="Users" afterText="" />
         <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
           <ProfileCard name={"John"} similarity={"72.5"} />
