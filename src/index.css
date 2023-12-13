@@ -27,3 +27,16 @@ html.dark ::-webkit-scrollbar-thumb {
   background-color: #334155;
 
 }
+
+html.dark .toast {
+  background-color: #0f172a !important;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+}
+
+.toast {
+  max-width: 500px !important;
+  transition: all 300ms linear;
+  border: 1px solid white;
+  padding: 4px 8px !important;
+}
