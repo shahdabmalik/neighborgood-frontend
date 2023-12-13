@@ -86,7 +86,7 @@ const Register = () => {
                 <NavbarLink pageLink={true} path={"/login"} name={"Login"} />
             </Navbar>
             <div className="max-w-screen-2xl mx-auto min-h-screen flex items-center justify-center px-4 md:px-10" >
-                <div className="flex justify-center w-full pt-16 ">
+                <div className="flex justify-center w-full lg:pt-16 ">
                     <div className="max-w-[420px] min-h-[520px] w-full p-4 flex flex-col gap-4 shadow-xl bg-primary-light border border-primary-light rounded-md lg:rounded-e-none overflow-hidden" >
                         <h1 className="text-center text-3xl font-semibold " >
                             {currentStep <= 2 && "Personal Details"}

@@ -14,7 +14,7 @@ const StepNine = () => {
                 label={"Tutoring"}
                 options={[
                     { value: "Literature", label: "Literature" },
-                    { value: "Scirnce", label: "Scirnce" },
+                    { value: "Science", label: "Science" },
                     { value: "History", label: "History" },
                     { value: "Maths", label: "Maths" },
                     { value: "Philosophy", label: "Philosophy" }
