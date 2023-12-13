@@ -1,5 +1,5 @@
 import SubHeading from "../../components/subHeading/SubHeading"
-import aboutImage from "../../assets/about.png"
+import aboutImage from "../../assets/about.webp"
 import { motion } from "framer-motion"
 
 const AboutSection = () => {
@@ -20,21 +20,21 @@ const AboutSection = () => {
 
     return (
         <div className='py-24 flex flex-col-reverse lg:flex-row-reverse gap-16 xl:gap-32 items-center' id="about">
-            <div className="w-md sm:max-w-lg lg:max-w-md">
+            <div className="w-full sm:max-w-lg lg:max-w-md">
                 <motion.img
                     variants={imageAnimation}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{once:true}}
+                    viewport={{ once: true }}
                     className="w-full" src={aboutImage} alt='image' />
             </div>
-            <div>
+            <div className="lg:basis-2/3 xl:basis-auto" >
                 <SubHeading text="" colorText="About" afterText="Us" />
                 <motion.div
                     variants={containerAni}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{once:true}}
+                    viewport={{ once: true }}
                     className="mt-8 flex flex-col gap-4" >
                     <motion.p variants={itemAni} className="text-color-brown dark:text-color-light" ><b>NeighborGood</b> is on a mission to provide the simplest
                         platform for neighborhoods to form connections

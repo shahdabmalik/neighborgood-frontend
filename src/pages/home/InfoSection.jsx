@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import infoImage from "../../assets/infoImage.png"
+import infoImage from "../../assets/infoImage.webp"
 import SubHeading from "../../components/subHeading/SubHeading"
 import { motion } from "framer-motion"
 
@@ -18,8 +18,8 @@ const InfoSection = () => {
     show: { opacity: 1, transition: { duration: 0.5 } },
   }
   return (
-    <div className='py-24 flex flex-col-reverse lg:flex-row gap-16 xl:gap-32 items-center' id="info">
-      <div className="w-md sm:max-w-lg lg:max-w-md">
+    <div className='py-24 flex flex-col-reverse lg:flex-row gap-16 lg:gap-8 xl:gap-32 items-center' id="info">
+      <div className="w-full sm:max-w-lg lg:max-w-md">
         <motion.img
           variants={imageAnimation}
           initial="hidden"
@@ -27,7 +27,7 @@ const InfoSection = () => {
           viewport={{once:true}}
           className="w-full" src={infoImage} alt='image' />
       </div>
-      <div>
+      <div className="lg:basis-2/3 xl:basis-auto " >
         <SubHeading text="A Way For Neighbors to" colorText="Connect" afterText="" />
         <motion.div
           variants={containerAni}

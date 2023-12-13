@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar/Navbar"
 import NavbarLink from "../../components/navbar/NavbarLink"
-import formImage from "../../assets/form.png"
+import formImage from "../../assets/form.webp"
 // import { Link } from "react-router-dom"
 import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
