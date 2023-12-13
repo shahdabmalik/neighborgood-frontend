@@ -7,7 +7,6 @@ const StepThree = ({ options, activity, activityKey }) => {
     const [selectedActivity, setSelectedActivity] = useState(null)
 
     const selectedActivityWatch = watch(activityKey)
-    console.log(selectedActivity, selectedActivityWatch);
 
     const handleChange = (value) => {
         if (selectedActivity === value) {
