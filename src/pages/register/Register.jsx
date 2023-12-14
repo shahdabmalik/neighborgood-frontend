@@ -14,10 +14,13 @@ import StepSeven from "./StepSeven"
 import StepEight from "./StepEight"
 import StepNine from "./StepNine"
 import toast from "react-hot-toast"
-// import axios from "axios"
+import { Oval } from "react-loader-spinner"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
-
+    const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false)
     const [currentStep, setCurrentStep] = useState(1)
     const methods = useForm()
     const totalSteps = 9;
@@ -35,6 +38,7 @@ const Register = () => {
                 zipCode: data.zipCode,
                 countryCode: data.countryCode?.value || null,
                 mobile: data.mobile,
+                shareDetails: data.shareDetails,
                 walking: data.walking.length > 0 ? data.walking[0] : null,
                 running: data.running.length > 0 ? data.running[0] : null,
                 stulfaftPark: data.stulfaftPark.length > 0 ? data.stulfaftPark[0] : null,
@@ -66,14 +70,18 @@ const Register = () => {
             }
             // Api Request
             try {
-                // const response = await axios.post("/", formData)
-                // console.log(response);
+                setIsLoading(true)
+                const response = await axios.post("/", formData)
+                console.log(response);
                 console.log(formData);
                 toast.success('Data submitted')
+                setIsLoading(false)
+                navigate("/dashboard")
             } catch (error) {
                 const errorMessage = error.response.data.message || error.message
                 console.log(error);
                 toast.error(errorMessage)
+                setIsLoading(false)
             }
 
         }
@@ -113,7 +121,20 @@ const Register = () => {
                                         </button>
                                         : <span></span>
                                     }
-                                    <button type="submit" className="justify-self-end px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm" >{currentStep === 9 ? "Submit" : "Next"}</button>
+                                    <button type="submit" disabled={isLoading} className={"justify-self-end h-8 px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm flex items-center justify-center " + (isLoading && " w-[83.3px] ")} >{!isLoading ? (currentStep === 9 ? "Submit" : "Next") :
+                                        <Oval
+                                            height={24}
+                                            width={24}
+                                            color="#ff7800"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                            visible={true}
+                                            ariaLabel='oval-loading'
+                                            secondaryColor="#ff7800"
+                                            strokeWidth={4}
+                                            strokeWidthSecondary={3}
+                                        />}
+                                    </button>
                                 </div>
                             </form>
                         </FormProvider>

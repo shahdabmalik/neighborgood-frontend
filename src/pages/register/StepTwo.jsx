@@ -11,14 +11,32 @@ const StepTwo = () => {
             <div className="flex flex-col gap-1.5 font-poppins relative" >
                 <label className="font-medium text-sm " htmlFor="age" >Age:</label>
                 <input type="text" name="age" id="age"
-                    {...register('age', { required: 'Age is required', min: { value: 8, message: "Age must be 8 years or older" }, max:{value: 100, message:"Age must be below 100"} })}
+                    {...register('age',
+                        {
+                            required: 'Age is required',
+                            min: { value: 8, message: "Age must be 8 years or older" },
+                            max: { value: 100, message: "Age must be below 100" },
+                            pattern: {
+                                value: /^\d+$/,
+                                message: "Only numbers are allowed"
+                            }
+                        })
+                    }
                     className="h-9 rounded focus:outline-none p-2 shadow-md" />
                 {errors.age && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.age.message}</p>}
             </div>
             <div className="flex flex-col gap-1.5 font-poppins relative" >
                 <label className="font-medium text-sm " htmlFor="zipCode" >Zip Code:</label>
-                <input type="number" name="zipCode" id="zipCode"
-                    {...register('zipCode', { required: 'Zip Code is required' })}
+                <input type="text" name="zipCode" id="zipCode"
+                    {...register('zipCode',
+                        {
+                            required: 'Please enter your zip code',
+                            pattern: {
+                                value: /^\d+$/,
+                                message: "Only numbers are allowed"
+                            }
+                        })
+                    }
                     className="h-9 rounded focus:outline-none p-2 shadow-md" />
                 {errors.zipCode && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.zipCode.message}</p>}
             </div>
@@ -27,7 +45,7 @@ const StepTwo = () => {
                 <Controller
                     name="countryCode"
                     control={control}
-                    rules={{ required: "Country Code is required" }}
+                    rules={{ required: "Please select a country code" }}
                     render={({ field }) => (
                         <Select
                             {...field}
@@ -45,7 +63,15 @@ const StepTwo = () => {
             <div className="flex flex-col gap-1.5 font-poppins relative" >
                 <label className="font-medium text-sm " htmlFor="mobile" >Mobile Number:</label>
                 <input type="tel" name="mobile" id="mobile"
-                    {...register('mobile', { required: 'Mobile Number is required' })}
+                    {...register('mobile',
+                        {
+                            required: 'Please enter your mobile number',
+                            pattern: {
+                                value: /^\d+$/,
+                                message: "Only numbers are allowed"
+                            }
+                        })
+                    }
                     className="h-9 rounded focus:outline-none p-2 shadow-md" />
                 {errors.mobile && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.mobile.message}</p>}
             </div>
