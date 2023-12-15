@@ -24,7 +24,7 @@ const InfoSection = () => {
           variants={imageAnimation}
           initial="hidden"
           whileInView="show"
-          viewport={{once:true}}
+          viewport={{ once: true }}
           className="w-full" src={infoImage} alt='image' />
       </div>
       <div className="lg:basis-2/3 xl:basis-auto " >
@@ -33,17 +33,17 @@ const InfoSection = () => {
           variants={containerAni}
           whileInView="show"
           initial="hidden"
-          viewport={{once:true}}
+          viewport={{ once: true }}
           className="mt-8 flex flex-col gap-4" >
           <motion.p variants={itemAni} className="text-color-brown dark:text-color-light">Neighborhood norms have evolved away from <b>spontaneous
-            connections.</b> Today we prefer to screen our
+            connections.</b></motion.p>
+          <motion.p variants={itemAni} className="text-color-brown dark:text-color-light"> Today we prefer to screen our
             contacts online before meeting in person. We screen work colleagues using <b>LinkedIn</b>; we screen
             activity
             participants on <b>Facebook</b>; we screen <b>romance candidates</b> using online <b>dating services.</b>
           </motion.p>
           <motion.p variants={itemAni} className="text-color-brown dark:text-color-light">What&#39;s needed now is an app that lets us share specific info that
-            we select, with <b>nearby neighbors</b>
-            that we also select-just as we can do now on Linkedin, but for our social lives with nearby neighbors.</motion.p>
+            we select, with <b>nearby neighbors</b> that we also select-just as we can do now on Linkedin, but for our social lives with nearby neighbors.</motion.p>
 
           <motion.p variants={itemAni} className="text-color-brown dark:text-color-light">Al can suggest <b>matches and activities</b>, making connection
             even <b>easier. LLMs</b> enable semantic

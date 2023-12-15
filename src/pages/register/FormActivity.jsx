@@ -28,7 +28,7 @@ const StepThree = ({ options, activity, activityKey }) => {
         <>
             <div className="flex flex-col gap-3 font-poppins relative rounded shadow-md border-2 p-2 pt-1.5 border-white" >
                 <p className="font-medium ">{activity}:</p>
-                <div className={"flex gap-x-4 gap-y-2.5 flex-wrap " + (options.length < 5 ? " justify-normal gap-x-8 " : " justify-between ")}>
+                <div className={"flex gap-x-4 gap-y-2.5 flex-wrap " + (options.length < 3 ? " justify-normal gap-x-8 " : " justify-between ")}>
                     {options.map((value, index) => (
                         <label key={index} className="flex text-sm items-center cursor-pointer">
                             <input
