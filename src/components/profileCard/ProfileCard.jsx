@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProfileCard = ({ name, similarity }) => {
     return (
-        <div className="border dark:border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-lg md:shadow-xl hover:shadow-amber-200 hover:border-primary-light dark:hover:border-slate-600 dark:shadow-none transition-all duration-300 overflow-hidden">
+        <div className="border dark:border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-lg md:shadow-xl hover:shadow-amber-200 hover:border-primary-light dark:hover:border-slate-600 dark:shadow-none transition-all duration-300 ease-linear overflow-hidden">
             <img className="aspect-4/3 w-full object-cover" src={profileImage} alt="profile" />
             <div className="bg-slate-100 dark:bg-slate-900 p-3 transition-all duration-300 ease-linear" >
                 <p className="text-2xl font-semibold text-color-brown dark:text-color-light transition-all duration-300 ease-linear" >{name}</p>

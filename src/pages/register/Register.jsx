@@ -73,7 +73,6 @@ const Register = () => {
                 setIsLoading(true)
                 const response = await axios.post("/", formData)
                 console.log(response);
-                console.log(formData);
                 toast.success('Data submitted')
                 setIsLoading(false)
                 navigate("/dashboard")
@@ -117,11 +116,11 @@ const Register = () => {
                                 <div className="flex justify-between items-center" >
                                     {currentStep > 1 ?
                                         <button type="button" onClick={() => { setCurrentStep(currentStep - 1) }}
-                                            className="px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm" >Back
+                                            className="px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm h-9" >Back
                                         </button>
                                         : <span></span>
                                     }
-                                    <button type="submit" disabled={isLoading} className={"justify-self-end h-8 px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm flex items-center justify-center " + (isLoading && " w-[83.3px] ")} >{!isLoading ? (currentStep === 9 ? "Submit" : "Next") :
+                                    <button type="submit" disabled={isLoading} className={"justify-self-end h-9 px-4 py-1.5 bg-white hover:bg-slate-100 rounded font-semibold text-sm flex items-center justify-center " + (isLoading && " w-[83.3px] ")} >{!isLoading ? (currentStep === 9 ? "Submit" : "Next") :
                                         <Oval
                                             height={24}
                                             width={24}

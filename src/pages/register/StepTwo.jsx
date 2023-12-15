@@ -22,7 +22,7 @@ const StepTwo = () => {
                             }
                         })
                     }
-                    className="h-9 rounded focus:outline-none p-2 shadow-md" />
+                    className="h-10 rounded focus:outline-none p-2 shadow-md" />
                 {errors.age && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.age.message}</p>}
             </div>
             <div className="flex flex-col gap-1.5 font-poppins relative" >
@@ -37,7 +37,7 @@ const StepTwo = () => {
                             }
                         })
                     }
-                    className="h-9 rounded focus:outline-none p-2 shadow-md" />
+                    className="h-10 rounded focus:outline-none p-2 shadow-md" />
                 {errors.zipCode && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.zipCode.message}</p>}
             </div>
             <div className="flex flex-col gap-1.5 font-poppins relative" >
@@ -55,6 +55,7 @@ const StepTwo = () => {
                                 { value: "+91", label: "+91 (India)" },
                             ]}
                             isClearable
+                            className="h-10"
                         />
                     )}
                 />
@@ -72,7 +73,7 @@ const StepTwo = () => {
                             }
                         })
                     }
-                    className="h-9 rounded focus:outline-none p-2 shadow-md" />
+                    className="h-10 rounded focus:outline-none p-2 shadow-md" />
                 {errors.mobile && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.mobile.message}</p>}
             </div>
             <label htmlFor="shareDetails" className="flex justify-between items-center mt-2 cursor-pointer" >
