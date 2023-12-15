@@ -30,7 +30,7 @@ const Login = () => {
     }
 
     return (
-        <div className='w-full bg-white dark:bg-slate-950 transition-all duration-300 ease-linear' >
+        <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear' >
             <Navbar>
                 <NavbarLink pageLink={true} path={"/"} name={"Home"} />
                 <NavbarLink pageLink={true} path={"/register"} name={"Register"} />
@@ -50,17 +50,17 @@ const Login = () => {
                                             message: "Invalid email format"
                                         }
                                     })}
-                                    className="h-9 rounded focus:outline-none p-2 shadow-md" />
+                                    className="h-10 rounded focus:outline-none p-2 shadow-md" />
                                 {errors.email && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.email.message}</p>}
                             </div>
                             <div className="flex flex-col gap-1.5 font-poppins relative" >
                                 <label className="font-medium text-sm " htmlFor="password" >Password:</label>
                                 <input type="password" name="password" id="password"
                                     {...register('password', { required: 'Please enter your password', })}
-                                    className="h-9 rounded focus:outline-none p-2 shadow-md" />
+                                    className="h-10 rounded focus:outline-none p-2 shadow-md" />
                                 {errors.password && <p className="text-xs text-black font-semibold absolute -bottom-5 right-0.5">{errors.password.message}</p>}
                             </div>
-                            <button type="submit" disabled={isLoading} className="h-9 bg-white hover:bg-slate-100 mt-6 rounded font-semibold flex items-center justify-center" >{!isLoading ? "Login" :
+                            <button type="submit" disabled={isLoading} className="h-10 bg-white hover:bg-slate-100 mt-6 rounded font-semibold flex items-center justify-center" >{!isLoading ? "Login" :
                                 <Oval
                                     height={24}
                                     width={24}

@@ -1,5 +1,4 @@
 import Navbar from "../../components/navbar/Navbar"
-import NavbarLink from "../../components/navbar/NavbarLink"
 import formImage from "../../assets/form.webp"
 // import { Link } from "react-router-dom"
 import { useState } from "react"
@@ -16,7 +15,7 @@ import StepNine from "./StepNine"
 import toast from "react-hot-toast"
 import { Oval } from "react-loader-spinner"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Register = () => {
     const navigate = useNavigate()
@@ -87,13 +86,10 @@ const Register = () => {
     }
 
     return (
-        <div className='w-full bg-white dark:bg-slate-950 transition-all duration-300 ease-linear' >
-            <Navbar>
-                <NavbarLink pageLink={true} path={"/"} name={"Home"} />
-                <NavbarLink pageLink={true} path={"/login"} name={"Login"} />
-            </Navbar>
+        <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors  duration-300 ease-linear' >
+            <Navbar />
             <div className="max-w-screen-2xl mx-auto min-h-screen flex items-center justify-center px-4 md:px-10" >
-                <div className="flex justify-center w-full lg:pt-16 ">
+                <div className="flex justify-center w-full lg:pt-8 relative">
                     <div className="max-w-[420px] min-h-[520px] w-full p-4 flex flex-col gap-4 shadow-xl bg-primary-light border border-primary-light rounded-md lg:rounded-e-none overflow-hidden" >
                         <h1 className="text-center text-3xl font-semibold " >
                             {currentStep <= 2 && "Personal Details"}
@@ -141,6 +137,7 @@ const Register = () => {
                     <div className=" hidden max-w-md w-full shadow-xl border border-primary-light rounded-e-md lg:flex items-center justify-center">
                         <img className=" w-full object-cover " src={formImage} alt="image" />
                     </div>
+                    <p className="text-center absolute -bottom-10" >Already have an account? <Link className="font-semibold text-blue-600" to="/login" >Login</Link></p>
                 </div>
             </div>
         </div>

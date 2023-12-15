@@ -8,7 +8,7 @@ const Dashboard = () => {
   document.title = "Dashboard - Neighborgood"
 
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-slate-950 transition-all duration-300 ease-linear" >
+    <div className="w-full min-h-screen bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear" >
       <Navbar>
         <NavbarLink pageLink={true} path={"/"} name={"Home"} />
         <NavbarLink pageLink={true} path={"/profile"} name={"Profile"} />
