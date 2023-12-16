@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { Oval } from "react-loader-spinner"
-import toast from "react-hot-toast"
-import axios from "axios"
+import { loginUser } from "../../redux/features/auth/authServices"
+import { useDispatch } from "react-redux"
+import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const Login = () => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -18,13 +20,14 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             setIsLoading(true)
-            const response = await axios.post("/", data)
+            const response = await loginUser(data)
+            dispatch(SET_USER(response.user))
+            dispatch(SET_LOGIN(true))
             console.log(response);
             setIsLoading(false)
             navigate("/dashboard")
         } catch (error) {
             console.log(error);
-            toast.error("Error Occurred")
             setIsLoading(false)
         }
     }

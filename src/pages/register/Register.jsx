@@ -1,7 +1,7 @@
 import Navbar from "../../components/navbar/Navbar"
 import formImage from "../../assets/form.webp"
 // import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import StepOne from "./StepOne"
 import StepTwo from "./StepTwo"
@@ -14,15 +14,41 @@ import StepEight from "./StepEight"
 import StepNine from "./StepNine"
 import toast from "react-hot-toast"
 import { Oval } from "react-loader-spinner"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
+import { registerUser } from "../../redux/features/auth/authServices"
+import { useDispatch } from "react-redux"
+import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const Register = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [location, setLocation] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [currentStep, setCurrentStep] = useState(1)
     const methods = useForm()
     const totalSteps = 9;
+
+    // get loction call
+    useEffect(() => {
+        getLocation()
+    }, [])
+    // get location function
+    function getLocation() {
+        if (!navigator.geolocation) {
+            toast.error("Get Location is not supported by the browser")
+        }
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLocation({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+            });
+        }, () => {
+            toast.error("Please provide location access. It is mandatory for finding matches", {
+                duration: 8000
+            })
+        }
+        );
+    }
 
     const onSubmit = async (data) => {
         if (currentStep < totalSteps) {
@@ -59,7 +85,9 @@ const Register = () => {
                 repairAdvice: data.repairAdvice.length > 0 ? data.repairAdvice[0] : null,
                 otherAdvice: data.otherAdvice.length > 0 ? data.otherAdvice[0] : null,
                 tutoring: data.tutoring?.value || null,
-                profile: data.profile[0] || null
+                profile: data.profile[0] || null,
+                latitude: location?.latitude || null,
+                longitude: location?.longitude || null
             }
             const { walking, running, stulfaftPark, dogWalking, gardening, swimming, coffeeTea, art, foodGatherings, televisionSports, movies, shopping, happyHours, errands, rides, childcare, eldercare, petcare, repairAdvice, otherAdvice, tutoring } = formData
 
@@ -67,18 +95,22 @@ const Register = () => {
             if (!walking && !running && !stulfaftPark && !dogWalking && !gardening && !swimming && !coffeeTea && !art && !foodGatherings && !televisionSports && !movies && !shopping && !happyHours && !errands && !rides && !childcare && !eldercare && !petcare && !repairAdvice && !otherAdvice && !tutoring) {
                 return toast.error("Please fill out atleast one interest field")
             }
+            if (!location) {
+                getLocation()
+                return
+            }
             // Api Request
             try {
                 setIsLoading(true)
-                const response = await axios.post("/", formData)
+                const response = await registerUser()
+                dispatch(SET_USER(response.user))
+                dispatch(SET_LOGIN(true))
                 console.log(response);
-                toast.success('Data submitted')
+                toast.success('Registered')
                 setIsLoading(false)
                 navigate("/dashboard")
             } catch (error) {
-                const errorMessage = error.response.data.message || error.message
                 console.log(error);
-                toast.error(errorMessage)
                 setIsLoading(false)
             }
 
