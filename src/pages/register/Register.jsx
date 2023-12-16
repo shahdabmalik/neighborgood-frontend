@@ -102,7 +102,7 @@ const Register = () => {
             // Api Request
             try {
                 setIsLoading(true)
-                const response = await registerUser()
+                const response = await registerUser(formData)
                 dispatch(SET_USER(response.user))
                 dispatch(SET_LOGIN(true))
                 console.log(response);
