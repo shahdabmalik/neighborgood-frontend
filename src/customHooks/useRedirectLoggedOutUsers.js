@@ -16,14 +16,14 @@ const useRedirectLoggedOutUsers = async () => {
     useEffect(() => {
         async function checkUser() {
             try {
-                const response = await axios.get("/", { headers: { Authorization: `Bearer ${token}` } })
+                const response = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
                 const data = response.data
                 dispatch(SET_USER(data?.user))
                 dispatch(SET_LOGIN(true))
             } catch (error) {
                 console.log(error);
-                const message = error.response.data.message || error.message
-                toast.error(message)
+                // const message = error.response.data.message || error.message
+                toast.error("Request unauthorized, Please login")
                 navigate("/login")
             }
         }
