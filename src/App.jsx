@@ -5,16 +5,19 @@ import Profile from "./pages/profile/Profile"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import { Toaster } from "react-hot-toast"
+import axios from "axios"
+
+axios.defaults.withCredentials = true
 
 function App() {
 
   return (
     <BrowserRouter>
-    <Toaster
-    toastOptions={{
-      className:"toast",
-    }}
-     />
+      <Toaster
+        toastOptions={{
+          className: "toast",
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

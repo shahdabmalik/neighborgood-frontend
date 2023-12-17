@@ -20,6 +20,9 @@ import { useDispatch } from "react-redux"
 import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const Register = () => {
+
+    document.title = "Register - Neighborgood"
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [location, setLocation] = useState(null)
@@ -103,9 +106,9 @@ const Register = () => {
             try {
                 setIsLoading(true)
                 const response = await registerUser(formData)
-                dispatch(SET_USER(response.user))
+                dispatch(SET_USER(response?.user))
                 dispatch(SET_LOGIN(true))
-                console.log(response);
+                window.localStorage.setItem("token", response?.token)
                 toast.success('Registered')
                 setIsLoading(false)
                 navigate("/dashboard")

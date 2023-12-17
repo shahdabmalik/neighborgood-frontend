@@ -11,6 +11,8 @@ import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const Login = () => {
 
+    document.title = "Login - Neighborgood"
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
@@ -21,8 +23,9 @@ const Login = () => {
         try {
             setIsLoading(true)
             const response = await loginUser(data)
-            dispatch(SET_USER(response.user))
+            dispatch(SET_USER(response?.user))
             dispatch(SET_LOGIN(true))
+            window.localStorage.setItem('token', response?.token)
             console.log(response);
             setIsLoading(false)
             navigate("/dashboard")

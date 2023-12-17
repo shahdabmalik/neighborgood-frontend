@@ -2,9 +2,11 @@ import Navbar from "../../components/navbar/Navbar"
 import NavbarLink from "../../components/navbar/NavbarLink"
 import ProfileCard from "../../components/profileCard/ProfileCard"
 import SubHeading from "../../components/subHeading/SubHeading"
+import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers"
 
 const Dashboard = () => {
 
+  useRedirectLoggedOutUsers()
   document.title = "Dashboard - Neighborgood"
 
   return (
@@ -14,7 +16,7 @@ const Dashboard = () => {
         <NavbarLink pageLink={true} path={"/profile"} name={"Profile"} />
       </Navbar>
       <div className="max-w-screen-2xl mx-auto px-4 md:px-10 py-24" >
-      <SubHeading text="Similar" colorText="Users" afterText="" />
+        <SubHeading text="Similar" colorText="Users" afterText="" />
         <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
           <ProfileCard name={"John"} similarity={"72.5"} />
           <ProfileCard name={"Anthony"} similarity={"81.7"} />
