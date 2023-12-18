@@ -1,15 +1,32 @@
 import Navbar from "../../components/navbar/Navbar"
 import NavbarLink from "../../components/navbar/NavbarLink"
 import profileImage from "../../assets/profile.svg"
+import { TbMessageCircle2Filled } from "react-icons/tb";
 import Activity from "./Activity";
-import { useSelector } from "react-redux";
 import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleUser } from "../../redux/features/user/userServices";
 
-const Profile = () => {
+const UserProfile = () => {
 
     useRedirectLoggedOutUsers()
-    const { user } = useSelector(state => state.auth)
+    const { id } = useParams()
+    const [user, setUser] = useState(null)
     document.title = `${user?.name} - Neighborgood` || "Profile - Neighborgood"
+
+    // Get user
+    useEffect(() => {
+        async function getUser() {
+            try {
+                const data = await getSingleUser(id)
+                setUser(data.user)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getUser()
+    }, [id])
 
     return (
         <div className="w-full bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear min-h-screen px-4 md:px-10" >
@@ -24,10 +41,15 @@ const Profile = () => {
                         <div className="border-b pb-2 border-slate-300 dark:border-slate-700 transition-none md:transition-colors duration-300 ease-linear">
                             <h1 className="text-4xl font-semibold text-transparent bg-gradient-to-r to-primary-light from-primary-dark bg-clip-text inline-block" >{user?.name}</h1>
                         </div>
-                        <div className="flex-grow flex flex-col justify-center gap-4 text-slate-700 dark:text-slate-300 transition-none md:transition-colors duration-300 ease-linear" >
-                            <div className="flex xs:gap-4 items-center" ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Phone:</span> <span className="flex-grow text-sm" >{user?.mobile}</span></div>
-                            <div className="flex xs:gap-4 items-center" ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Email:</span> <span className="flex-grow text-sm" >{user?.email}</span></div>
-                            {/* <div className="flex gap-4 " ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Address:</span> <span className="flex-grow text-sm" >232 Luettgen Rapid, Trantowborough, CA 44218-8638</span></div> */}
+                        {user?.shareDetails &&
+                            <div className="flex-grow flex flex-col justify-center gap-4 text-slate-700 dark:text-slate-300 transition-none md:transition-colors duration-300 ease-linear" >
+                                <div className="flex xs:gap-4 items-center" ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Phone:</span> <span className="flex-grow text-sm" >{user?.mobile}</span></div>
+                                <div className="flex xs:gap-4 items-center" ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Email:</span> <span className="flex-grow text-sm" >{user?.email}</span></div>
+                                {/* <div className="flex gap-4 " ><span className="font-semibold basis-1/4 text-slate-800 dark:text-slate-200" >Address:</span> <span className="flex-grow text-sm" >232 Luettgen Rapid, Trantowborough, CA 44218-8638</span></div> */}
+                            </div>
+                        }
+                        <div className=" " >
+                            <button type="button" className=" w-full flex gap-2 justify-center rounded font-semibold text-black bg-primary-light hover:bg-primary transition-none md:transition-colors items-center border border-primary-light px-4 py-2" >Message <TbMessageCircle2Filled size={20} /></button>
                         </div>
                     </div>
                 </div>
@@ -64,8 +86,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-
     )
 }
 
-export default Profile
+export default UserProfile
