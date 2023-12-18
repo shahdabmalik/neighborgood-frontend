@@ -7,6 +7,7 @@ import Register from "./pages/register/Register"
 import { Toaster } from "react-hot-toast"
 import axios from "axios"
 
+axios.defaults.baseURL = "http://127.0.0.1:7000"
 axios.defaults.withCredentials = true
 
 function App() {

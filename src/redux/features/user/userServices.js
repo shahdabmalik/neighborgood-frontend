@@ -6,7 +6,7 @@ axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 
 export const getSimilarUser = async () => {
     try {
-        const response = axios.get("/")
+        const response = await axios.get("/")
         return response.data
     } catch (error) {
         console.log(error);
