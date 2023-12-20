@@ -6,7 +6,8 @@ import Activity from "./Activity";
 import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleUser } from "../../redux/features/user/userServices";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const UserProfile = () => {
 
@@ -14,19 +15,22 @@ const UserProfile = () => {
     const { id } = useParams()
     const [user, setUser] = useState(null)
     document.title = `${user?.name} - Neighborgood` || "Profile - Neighborgood"
+    const token = window.localStorage.getItem('token')
 
     // Get user
     useEffect(() => {
         async function getUser() {
             try {
-                const data = await getSingleUser(id)
+                const { data } = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
                 setUser(data.user)
             } catch (error) {
                 console.log(error);
+                const message = error.response.data.message || error.message
+                toast.error(message)
             }
         }
         getUser()
-    }, [id])
+    }, [id, token])
 
     return (
         <div className="w-full bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear min-h-screen px-4 md:px-10" >

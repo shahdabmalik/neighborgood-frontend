@@ -4,29 +4,32 @@ import NavbarLink from "../../components/navbar/NavbarLink"
 import ProfileCard from "../../components/profileCard/ProfileCard"
 import SubHeading from "../../components/subHeading/SubHeading"
 import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers"
-import { getSimilarUser } from "../../redux/features/user/userServices"
 import { useDispatch, useSelector } from "react-redux"
 import { SET_SIMILAR_USERS } from "../../redux/features/user/userSlice"
+import axios from "axios"
+import toast from "react-hot-toast"
 
 const Dashboard = () => {
 
   document.title = "Dashboard - Neighborgood"
   useRedirectLoggedOutUsers()
-
+  const token = window.localStorage.getItem('token')
   const dispatch = useDispatch()
   const { similarUsers } = useSelector(state => state.user)
 
   useEffect(() => {
     async function getUsers() {
       try {
-        const data = await getSimilarUser()
+        const { data } = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
         dispatch(SET_SIMILAR_USERS(data?.users))
       } catch (error) {
         console.log(error);
+        const message = error.response.data.message || error.message
+        toast.error(message)
       }
     }
     getUsers()
-  }, [dispatch])
+  }, [dispatch, token])
 
   return (
     <div className="w-full min-h-screen bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear" >
