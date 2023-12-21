@@ -5,12 +5,12 @@ import { useEffect } from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
 
-const token = window.localStorage.getItem('token')
 
 const useRedirectLoggedOutUsers = async () => {
-
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const token = window.localStorage.getItem('token')
 
 
     useEffect(() => {
