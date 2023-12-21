@@ -41,7 +41,7 @@ const Dashboard = () => {
         <SubHeading text="Similar" colorText="Users" afterText="" />
         <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
           {similarUsers?.map((user) => (
-            <ProfileCard name={user} key={user?.id} />
+            <ProfileCard user={user} key={user?.id} />
           ))}
         </div>
       </div>
