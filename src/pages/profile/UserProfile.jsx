@@ -21,7 +21,7 @@ const UserProfile = () => {
     useEffect(() => {
         async function getUser() {
             try {
-                const { data } = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
+                const { data } = await axios.get(`/user/?id=${id}`, { headers: { Authorization: `Token ${token}` } })
                 setUser(data.user)
             } catch (error) {
                 console.log(error);

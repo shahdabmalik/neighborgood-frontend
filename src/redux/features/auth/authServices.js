@@ -7,7 +7,7 @@ axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 // register user
 export const registerUser = async (data) => {
     try {
-        const response = await axios.post("/", JSON.stringify(data))
+        const response = await axios.post("/index/", JSON.stringify(data))
         return response.data
     } catch (error) {
         console.log(error);
@@ -18,7 +18,7 @@ export const registerUser = async (data) => {
 // login user
 export const loginUser = async (data) => {
     try {
-        const response = await axios.post("/", JSON.stringify(data))
+        const response = await axios.post("/login/", JSON.stringify(data))
         return response.data
     } catch (error) {
         console.log(error);

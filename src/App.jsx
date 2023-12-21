@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast"
 import axios from "axios"
 import UserProfile from "./pages/profile/UserProfile"
 
-axios.defaults.baseURL = "http://127.0.0.1:7000"
+axios.defaults.baseURL = "https://neighborgood-s0cq.onrender.com"
 axios.defaults.withCredentials = true
 
 function App() {

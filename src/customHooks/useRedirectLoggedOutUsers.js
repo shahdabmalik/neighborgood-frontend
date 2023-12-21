@@ -16,7 +16,7 @@ const useRedirectLoggedOutUsers = async () => {
     useEffect(() => {
         async function checkUser() {
             try {
-                const response = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
+                const response = await axios.get("/restricted/", { headers: { Authorization: `Token ${token}` } })
                 const data = response.data
                 dispatch(SET_USER(data?.user))
                 dispatch(SET_LOGIN(true))

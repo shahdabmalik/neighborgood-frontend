@@ -20,7 +20,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function getUsers() {
       try {
-        const { data } = await axios.get("/", { headers: { Authorization: `Token ${token}` } })
+        const { data } = await axios.get("/similar_user/", { headers: { Authorization: `Token ${token}` } })
         dispatch(SET_SIMILAR_USERS(data?.users))
       } catch (error) {
         console.log(error);
