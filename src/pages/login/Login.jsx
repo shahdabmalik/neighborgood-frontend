@@ -5,9 +5,10 @@ import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { Oval } from "react-loader-spinner"
-import { loginUser } from "../../redux/features/auth/authServices"
 import { useDispatch } from "react-redux"
 import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
+import axios from "axios"
+import toast from "react-hot-toast"
 
 const Login = () => {
 
@@ -22,15 +23,17 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             setIsLoading(true)
-            const response = await loginUser(data)
-            dispatch(SET_USER(response?.user))
+            const response = await axios.post("/login/", JSON.stringify(data))
+            // const response = await loginUser(data)
+            window.localStorage.setItem('token', response?.data?.token)
+            dispatch(SET_USER(response?.data?.user))
             dispatch(SET_LOGIN(true))
-            window.localStorage.setItem('token', response?.token)
-            console.log(response);
-            setIsLoading(false)
             navigate("/dashboard")
+            setIsLoading(false)
         } catch (error) {
             console.log(error);
+            const message = error.response.data.error || error.message
+            toast.error(message)
             setIsLoading(false)
         }
     }

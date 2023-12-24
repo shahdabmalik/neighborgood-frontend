@@ -15,9 +15,10 @@ import StepNine from "./StepNine"
 import toast from "react-hot-toast"
 import { Oval } from "react-loader-spinner"
 import { Link, useNavigate } from "react-router-dom"
-import { registerUser } from "../../redux/features/auth/authServices"
+// import { registerUser } from "../../redux/features/auth/authServices"
 import { useDispatch } from "react-redux"
 import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
+import axios from "axios"
 
 const Register = () => {
 
@@ -105,18 +106,20 @@ const Register = () => {
             // Api Request
             try {
                 setIsLoading(true)
-                const response = await registerUser(formData)
-                dispatch(SET_USER(response?.user))
+                const response = await axios.post("/index/", JSON.stringify(data))
+                // const response = await registerUser(formData)
+                dispatch(SET_USER(response?.data?.user))
                 dispatch(SET_LOGIN(true))
-                window.localStorage.setItem("token", response?.token)
+                window.localStorage.setItem("token", response?.data?.token)
                 toast.success('Registered')
                 setIsLoading(false)
                 navigate("/dashboard")
             } catch (error) {
                 console.log(error);
+                const message = error.response.data.message || error.message
+                toast.error(message)
                 setIsLoading(false)
             }
-
         }
     }
 
@@ -172,7 +175,7 @@ const Register = () => {
                     <div className=" hidden max-w-md w-full shadow-xl border border-primary-light rounded-e-md lg:flex items-center justify-center">
                         <img className=" w-full object-cover " src={formImage} alt="image" />
                     </div>
-                    <p className="text-center absolute -bottom-10" >Already have an account? <Link className="font-semibold text-blue-600" to="/login" >Login</Link></p>
+                    <p className="text-center absolute -bottom-10 text-slate-800 dark:text-slate-200 font-medium" >Already have an account? <Link className="font-semibold text-blue-600" to="/login" >Login</Link></p>
                 </div>
             </div>
         </div>
