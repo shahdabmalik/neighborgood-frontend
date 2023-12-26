@@ -106,7 +106,7 @@ const Register = () => {
             // Api Request
             try {
                 setIsLoading(true)
-                const response = await axios.post("/index/", JSON.stringify(data))
+                const response = await axios.post("/index/", JSON.stringify(formData))
                 // const response = await registerUser(formData)
                 dispatch(SET_USER(response?.data?.user))
                 dispatch(SET_LOGIN(true))
