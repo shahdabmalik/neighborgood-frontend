@@ -35,7 +35,7 @@ const Navbar = ({ children }) => {
 
     return (
         <>
-            <div className={"fixed z-50 top-0 left-0 w-full border-b border-slate-200 dark:border-slate-800 transition-transform md:transition-colors duration-300 ease-linear backdrop-blur-lg bg-white dark:bg-slate-950 bg-opacity-75 dark:bg-opacity-75 " + (show ? " translate-y-0 " : " -translate-y-32 ") + (shadow ? " shadow-md " : " ")} >
+            <div className={"fixed z-50 top-0 left-0 w-full border-b border-slate-200 dark:border-slate-800 transition-transform duration-300 ease-linear backdrop-blur-lg bg-white dark:bg-slate-950 bg-opacity-75 dark:bg-opacity-75 " + (show ? " translate-y-0 " : " -translate-y-32 ") + (shadow ? " shadow-md " : " ")} >
                 <nav className="max max-w-screen-2xl w-full mx-auto px-4 md:px-10 h-16 flex justify-between items-center" >
                     <Link to={"/"} className="sm:w-60 h-16 overflow-hidden -ml-5" ><img className="w-full h-16 object-cover" src={logo} alt="logo" /></Link>
                     <div className="flex items-center gap-4">

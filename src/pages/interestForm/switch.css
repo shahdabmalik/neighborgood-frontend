@@ -1,0 +1,119 @@
+.switch-check input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+}
+
+.switch-check *,
+.switch-check ::after,
+.switch-check ::before {
+    box-sizing: border-box;
+}
+
+.switch-check {
+    display: flex;
+    /* align-items: center; */
+}
+
+.switch-check .switch {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.switch-check .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 0 2px #777, 0 0 4px #777;
+    cursor: pointer;
+    border: 4px solid transparent;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.switch-check .slider:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #777;
+    border-radius: 30px;
+    transform: translateX(-20px);
+    transition: 0.2s;
+}
+
+.switch-check input:checked+.slider:before {
+    transform: translateX(20px);
+    background-color: limeGreen;
+}
+
+.switch-check input:checked+.slider {
+    box-shadow: 0 0 0 2px limeGreen, 0 0 8px limeGreen;
+}
+
+/* option checkbox */
+
+.option-checkbox input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+}
+
+.option-checkbox label {
+    position: relative;
+    padding-left: 28px;
+    padding-right: 8px;
+    line-height: 2;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.option-checkbox label::selection {
+    background-color: transparent;
+}
+
+.option-checkbox label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    top: 0.3em;
+    left: 0;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #64748b !important;
+    border-radius: 100px;
+    /* z-index: -1; */
+}
+
+.option-checkbox input[type="checkbox"]:checked+label {
+    padding-left: 16px;
+    padding-right: 16px;
+    color: white;
+    z-index: 10;
+    font-weight: 500;
+    /* letter-spacing: 0.5px; */
+}
+
+html.dark .option-checkbox input[type="checkbox"]:checked+label {
+    color: black;
+}
+
+
+.option-checkbox input[type="checkbox"]:checked+label:before {
+    top: 0;
+    width: 100%;
+    height: 2em;
+    background: #ff7800;
+    border: 2px solid #ff5200 !important;
+    z-index: -1;
+}
+
+.option-checkbox label,
+.option-checkbox label::before {
+    transition: 0.25s all ease;
+}

@@ -40,3 +40,49 @@ html.dark .toast {
   border: 1px solid white;
   padding: 4px 8px !important;
 }
+
+.select-input .css-13cymwt-control,
+.select-input .css-t3ipsp-control {
+  border: 1px solid #ff77007b !important;
+}
+
+html.dark .select-input .css-13cymwt-control,
+html.dark .select-input .css-t3ipsp-control {
+  background-color: #020617 !important;
+  color: #ffffff !important;
+
+  /* color: white !important; */
+
+}
+
+.select-input .css-1nmdiq5-menu {
+  border: 1px solid #ff77007b !important;
+
+}
+
+html.dark .css-1dimb5e-singleValue {
+  color: #e2e8f0 !important;
+}
+
+html.dark .my-select__control {
+  color: #e2e8f0 !important;
+}
+
+html.dark .my-select__menu {
+  background-color: #0f172a !important;
+  color: #cbd5e1 !important;
+}
+
+.my-select__option--is-selected {
+  background-color: #ff7800 !important;
+  color: black !important;
+}
+
+.my-select__option--is-focused {
+  background-color: #f1f5f9 !important;
+}
+
+html.dark .my-select__option--is-focused {
+  background-color: #1e293b !important;
+  color: white !important;
+}
