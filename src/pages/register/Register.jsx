@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 import { Oval } from "react-loader-spinner"
-import { Link,useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import Select from "react-select"
 import "./termCheckBox.css"
@@ -64,7 +64,8 @@ const Register = () => {
         try {
             setIsLoading(true)
             const response = await axios.post("/index/", JSON.stringify(formData))
-            toast.success('Verification Email Sent')
+            toast.success(response?.data?.message)
+            window.localStorage.setItem('token', response?.data?.token)
             setIsLoading(false)
             navigate("/verify")
         } catch (error) {
@@ -198,7 +199,7 @@ const Register = () => {
                                         required: 'Please provide a password',
                                         minLength: { value: 8, message: "Password must be upto 8 characters" },
                                         pattern: {
-                                            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                                            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
                                             message: "Should contain letters and numbers"
                                         }
                                     })}

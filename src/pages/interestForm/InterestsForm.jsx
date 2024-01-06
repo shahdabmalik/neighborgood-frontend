@@ -4,19 +4,40 @@ import { FormProvider, useForm } from "react-hook-form"
 import FirstStep from "./FirstStep"
 import SecondStep from "./SecondStep"
 import { Oval } from "react-loader-spinner"
+import toast from "react-hot-toast"
+import axios from "axios"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const InterestsForm = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const methods = useForm()
     const [currentStep, setCurrentStep] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
     const totalSteps = 2;
+    const token = window.localStorage.getItem('token')
 
     const onSubmit = async (data) => {
         if (currentStep < totalSteps) {
             setCurrentStep(currentStep + 1)
         } else {
-            console.log(data);
+            try {
+                setIsLoading(true)
+                const response = await axios.post("/", JSON.stringify(data), {
+                    headers: { Authorization: `Token ${token}` }
+                })
+                dispatch(SET_USER(response?.data?.user))
+                setIsLoading(false)
+            } catch (error) {
+                setIsLoading(false)
+                console.log(error);
+                const message = error.response.data.message || error.message
+                toast.error(message)
+            }
         }
     }
 
@@ -29,11 +50,11 @@ const InterestsForm = () => {
         <div className='w-full bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 transition-none md:transition-colors relative' >
             <Navbar />
             <div className="max-w-screen-xl mx-auto min-h-screen px-4 md:px-10 pt-20 md:pt-24 pb-12" >
-                <h1 className=" text-2xl xs:text-3xl sm:text-4xl font-semibold text-primary " >{ currentStep === 1 ? "Share What You Love?" : "Be a Neighborhood Hero"}</h1>
+                <h1 className=" text-2xl xs:text-3xl sm:text-4xl font-semibold text-primary " >{currentStep === 1 ? "Share What You Love?" : "Be a Neighborhood Hero"}</h1>
                 <p className=" text-sm xs:text-base mt-1.5 text-color-brown dark:text-color-light" >
-                { currentStep === 1 ? "Your interests are the key to meaningful connections. Select them carefully to find someone who truly complements you." :
-                "Every little help counts! Select the ways you’re ready to pitch in and enrich our neighborhood’s sense of togetherness and cooperation."
-                }</p>
+                    {currentStep === 1 ? "Your interests are the key to meaningful connections. Select them carefully to find someone who truly complements you." :
+                        "Every little help counts! Select the ways you’re ready to pitch in and enrich our neighborhood’s sense of togetherness and cooperation."
+                    }</p>
                 <div className="grid grid-cols-2 gap-4 md:gap-8 mt-8 px-0.5" >
                     <div className="h-1.5 bg-primary rounded-full w-full" ></div>
                     <div className={"h-1.5 rounded-full w-full " + (currentStep === totalSteps ? " bg-primary " : " bg-slate-200 dark:bg-slate-800 ")} ></div>

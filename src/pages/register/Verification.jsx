@@ -14,7 +14,7 @@ const Verification = () => {
   useEffect(() => {
     async function verifyUser() {
       try {
-        const response = await axios.post("/", { token })
+        const response = await axios.post(`/confirm_email/${token}`)
         toast.success(response?.data?.message)
         navigate("/login")
       } catch (error) {
@@ -29,7 +29,7 @@ const Verification = () => {
   return (
     <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors relative' >
       <Navbar />
-      <div className="max-w-screen-xl mx-auto min-h-screen px-4 md:px-10 flex items-center justify-center mb-16" >
+      <div className="max-w-screen-xl mx-auto min-h-screen px-4 md:px-10 flex items-center justify-center pb-16" >
         <div>
           <Lottie animationData={animation} loop={true} />
           <h1 className="text-center mt-8 text-3xl font-semibold text-primary" >Verifying...</h1>

@@ -24,12 +24,18 @@ const Login = () => {
         try {
             setIsLoading(true)
             const response = await axios.post("/login/", JSON.stringify(data))
-            // const response = await loginUser(data)
             window.localStorage.setItem('token', response?.data?.token)
             dispatch(SET_USER(response?.data?.user))
             dispatch(SET_LOGIN(true))
-            navigate("/dashboard")
             setIsLoading(false)
+            if (!response?.data?.user?.email_confirmed) {
+                return navigate("/verify")
+            }
+            if (!response?.data?.user?.interests_updated) {
+                return navigate("/interests")
+            }
+            // const response = await loginUser(data)
+            navigate("/dashboard")
         } catch (error) {
             console.log(error);
             const message = error.response.data.error || error.message

@@ -12,7 +12,8 @@ import InterestsForm from "./pages/interestForm/InterestsForm"
 import Verify from "./pages/register/Verify"
 import Verification from "./pages/register/Verification"
 
-axios.defaults.baseURL = "https://neighborgood-s0cq.onrender.com"
+// axios.defaults.baseURL = "https://neighborgood-s0cq.onrender.com"
+axios.defaults.baseURL = "http://127.0.0.1:7000/"
 axios.defaults.withCredentials = true
 
 function App() {
