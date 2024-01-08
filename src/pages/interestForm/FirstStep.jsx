@@ -43,7 +43,7 @@ const FirstStep = () => {
                 question={"Do you enjoy coffee or tea breaks? A moment to relax and recharge."}
                 questionKey={"coffeeTea"}
                 questionTwo={"Sounds delightful! Where do you prefer these cozy breaks?"}
-                options={["My Place", "Your Place"]}
+                options={["My Place", "Your Place", "Outdoors"]}
                 optionsKey={"coffeeTeaPlace"}
             />
             <Question
