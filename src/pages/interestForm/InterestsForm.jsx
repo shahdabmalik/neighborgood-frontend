@@ -8,7 +8,7 @@ import toast from "react-hot-toast"
 import axios from "axios"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
+import { SET_USER } from "../../redux/features/auth/authSlice"
 
 const InterestsForm = () => {
 
@@ -31,6 +31,7 @@ const InterestsForm = () => {
                     headers: { Authorization: `Token ${token}` }
                 })
                 dispatch(SET_USER(response?.data?.user))
+                navigate("/dashboard")
                 setIsLoading(false)
             } catch (error) {
                 setIsLoading(false)
