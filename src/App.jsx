@@ -11,6 +11,7 @@ import TermsAndConditions from "./pages/register/TermsAndConditions"
 import InterestsForm from "./pages/interestForm/InterestsForm"
 import Verify from "./pages/register/Verify"
 import Verification from "./pages/register/Verification"
+import GetStarted from "./pages/getStarted/GetStarted"
 
 // axios.defaults.baseURL = "https://neighborgood-s0cq.onrender.com"
 axios.defaults.baseURL = "http://127.0.0.1:7000/"
@@ -35,6 +36,7 @@ function App() {
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/verification/:token" element={<Verification />} />
+        <Route path="/get-started" element={<GetStarted />} />
         <Route path="/profile/:id" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
