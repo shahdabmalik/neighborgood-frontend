@@ -2,12 +2,20 @@ import Navbar from "../../components/navbar/Navbar"
 import getStartedImage from "../../assets/form.webp"
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom"
+import useFacebookSdk from "../../customHooks/useFacebookSdk";
 
 const GetStarted = () => {
 
     document.title = "Get Started - Neighborgood"
+    const appId = import.meta.env.VITE_FB_APPID
+
+    const isSdkReady = useFacebookSdk(appId)
 
     const handleLogin = () => {
+        if (!isSdkReady) {
+            console.error('Facebook SDK not initialized yet.');
+            return;
+        }
         window.FB.login(response => {
             console.log(response);
             if (response.authResponse) {
@@ -21,11 +29,11 @@ const GetStarted = () => {
     };
 
     const fetchUserProfile = () => {
-        window.FB.api('/me', {fields: 'name,email,picture'}, function(response) {
-          console.log('User profile data:', response);
-          // Handle the user's profile data here
+        window.FB.api('/me', { fields: 'name,email,picture' }, function (response) {
+            console.log('User profile data:', response);
+            // Handle the user's profile data here
         });
-      }
+    }
 
     return (
         <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors duration-300 ease-linear' >
