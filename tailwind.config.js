@@ -14,7 +14,8 @@ export default {
         'primary': '#ff7800',
         'primary-dark': '#ff5200',
         'color-brown': '#562504',
-        'color-light' : '#f7e1d0'
+        'color-light' : '#f7e1d0',
+        'facebook' : '#316FF6'
       },
       aspectRatio:{
         '4/3' : '4 / 3'

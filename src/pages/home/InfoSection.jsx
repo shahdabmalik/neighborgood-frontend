@@ -49,7 +49,7 @@ const InfoSection = () => {
             even <b>easier. LLMs</b> enable semantic
             understanding of wants and needs, allowing the neighborhood connector - formerly the local extrovert - to
             instead be an <b>Al agent.</b></motion.p>
-          <motion.div variants={itemAni} ><Link to={"/register"} className="inline-block mt-8 px-5 py-2.5 bg-primary-light hover:bg-primary rounded-md transition-all font-medium " >Get Started</Link></motion.div>
+          <motion.div variants={itemAni} ><Link to={"/get-started"} className="inline-block mt-8 px-5 py-2.5 bg-primary-light hover:bg-primary rounded-md transition-all font-medium " >Get Started</Link></motion.div>
         </motion.div>
       </div>
     </div>

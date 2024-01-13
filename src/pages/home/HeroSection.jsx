@@ -33,7 +33,7 @@ const HeroSection = () => {
                 className="text-center" >
                 <motion.h1 variants={itemAni} className="text-4xl h-12 sm:text-5xl sm:h-16 2xl:text-6xl 2xl:h-20 font-bold inline-block bg-gradient-to-r from-primary-light to-primary-dark text-transparent bg-clip-text" >Neighborgood</motion.h1>
                 <motion.p variants={itemAni} className="text-color-brown dark:text-color-light lg:w-[70%] mx-auto" >NeighborGood is on a mission to provide the simplest platform for neighborhoods to form connections & community. We are going after this by creating an AI agent that acts as the highly-social extrovert neighbor who finds symbiotic activities for people to do together.</motion.p>
-                <motion.div variants={itemAni}> <Link to={"/register"} className="inline-block mt-5 px-5 py-2.5 bg-primary-light hover:bg-primary rounded-md transition-all font-medium " >Get Started</Link></motion.div>
+                <motion.div variants={itemAni}> <Link to={"/get-started"} className="inline-block mt-5 px-5 py-2.5 bg-primary-light hover:bg-primary rounded-md transition-all font-medium " >Get Started</Link></motion.div>
             </motion.div>
         </div>
     )
