@@ -12,7 +12,6 @@ const useRedirectLoggedOutUsers = async () => {
     const navigate = useNavigate()
     const token = window.localStorage.getItem('token')
 
-
     useEffect(() => {
         async function checkUser() {
             try {
@@ -27,7 +26,7 @@ const useRedirectLoggedOutUsers = async () => {
                 console.log(error);
                 // const message = error.response.data.message || error.message
                 toast.error("Request unauthorized, Please login")
-                navigate("/login")
+                navigate("/get-started")
             }
         }
         checkUser()

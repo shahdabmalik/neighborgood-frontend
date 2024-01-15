@@ -33,7 +33,7 @@ const GoogleLoginButton = () => {
                 email: userObj.email,
                 picture: userObj.picture
             }
-            const { data } = await axios.post("/", userData)
+            const { data } = await axios.post("/google_login", userData)
             dispatch(SET_USER(data?.user))
             dispatch(SET_LOGIN(true))
             window.localStorage.setItem('token', data?.token)
@@ -56,7 +56,7 @@ const GoogleLoginButton = () => {
         // eslint-disable-next-line no-undef
         google.accounts.id.renderButton(
             document.getElementById('signIn'),
-            { shape: 'rounded', size: 'fill', width: "316", text:"Continue with Google" }
+            { shape: 'rounded', size: 'fill', width: "316", text: "Continue with Google" }
         );
     }
 
