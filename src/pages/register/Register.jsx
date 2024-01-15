@@ -29,7 +29,7 @@ const Register = () => {
         formData.append("zipCode", data.zipCode)
         formData.append("countryCode", data.countryCode?.value)
         formData.append("mobile", data.mobile)
-        formData.append("mobile", data.mobile)
+        formData.append("age", data.age)
         // Append the image file if it exists
         if (data?.profile && data?.profile?.length > 0) {
             formData.append('picture', data?.profile[0]);
@@ -37,7 +37,7 @@ const Register = () => {
         // Api Request
         try {
             setIsLoading(true)
-            const response = await axios.post("/index/", JSON.stringify(formData))
+            const response = await axios.post("/index/", formData)
             toast.success(response?.data?.message)
             window.localStorage.setItem('token', response?.data?.token)
             setIsLoading(false)
