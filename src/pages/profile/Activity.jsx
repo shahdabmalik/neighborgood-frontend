@@ -2,7 +2,6 @@
 const Activity = ({ activity, activityName }) => {
 
     const isArray = Array.isArray(activity)
-    console.log(activityName, isArray);
 
     return (
         <div className="border-b dark:border-slate-700 flex gap-8 justify-between text-sm pb-1 transition-none md:transition-colors duration-300 ease-linear" >
