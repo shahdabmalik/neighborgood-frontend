@@ -45,7 +45,7 @@ const UserProfile = () => {
             </Navbar>
             {!isLoading ? <div className="max-w-screen-lg mx-auto pt-32 pb-24" >
                 <div className="flex flex-col md:flex-row gap-10 md:gap-5" >
-                    <img className=" max-w-md md:max-w-[250px] lg:max-w-xs object-cover rounded-md border border-primary-light shadow-xl shadow-slate-200 dark:shadow-none" src={user?.profile || profileImage} alt="profile" />
+                    <img className=" max-w-md md:max-w-[250px] lg:max-w-xs object-cover rounded-md border border-primary-light shadow-xl shadow-slate-200 dark:shadow-none" src={user?.picture || profileImage} alt="profile" />
                     <div className=" flex flex-col gap-4 px-4 pb-4 pt-2 flex-grow rounded-md transition-none md:transition-colors duration-300 ease-linear" >
                         <div className="border-b pb-2 border-slate-300 dark:border-slate-700 transition-none md:transition-colors duration-300 ease-linear">
                             <h1 className="text-4xl font-semibold text-transparent bg-gradient-to-r to-primary-light from-primary-dark bg-clip-text inline-block" >{user?.name}</h1>
