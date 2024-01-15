@@ -21,16 +21,18 @@ const Register = () => {
     }, [])
 
     const onSubmit = async (data) => {
-        // data from form
-        const formData = {
-            name: data.name,
-            email: data.email,
-            password: data.password,
-            age: data.age,
-            zipCode: data.zipCode,
-            countryCode: data.countryCode?.value,
-            mobile: data.mobile,
-            profile: data.profile[0] || null,
+
+        const formData = new FormData()
+        formData.append("name", data.name)
+        formData.append("email", data.email)
+        formData.append("password", data.password)
+        formData.append("zipCode", data.zipCode)
+        formData.append("countryCode", data.countryCode?.value)
+        formData.append("mobile", data.mobile)
+        formData.append("mobile", data.mobile)
+        // Append the image file if it exists
+        if (data?.profile && data?.profile?.length > 0) {
+            formData.append('picture', data?.profile[0]);
         }
         // Api Request
         try {
@@ -193,7 +195,7 @@ const Register = () => {
                         <label className="cbx" htmlFor="cbx-46"><span>
                             <svg width="12px" height="10px" viewBox="0 0 12 10">
                                 <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </svg></span><span className={"text-sm inline-block ml-1 text-slate-800 dark:text-slate-200 " + (errors.terms && " border-b border-red-600 ")} >I agree to <a href="/terms" className="text-blue-500" target="_black" >Terms and Conditions</a></span>
+                            </svg></span><span className={"text-sm inline-block ml-1 text-slate-800 dark:text-slate-200 " + (errors.terms && " border-b border-red-600  text-red-600")} >I agree to <a href="/terms" className="text-blue-500" target="_black" >Terms and Conditions</a></span>
                         </label>
                     </div>
                     <button type="submit" disabled={isLoading} className={" h-10 bg-primary mt-6 w-32 text-white px-4 rounded font-medium flex items-center justify-center "} >{!isLoading ? "Submit" :

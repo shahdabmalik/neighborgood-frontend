@@ -3,9 +3,11 @@ import Navbar from "../../components/navbar/Navbar"
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers";
 
 const Verify = () => {
 
+  useRedirectLoggedOutUsers()
   const [timeLeft, setTimeLeft] = useState(120);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const token = window.localStorage.getItem('token')
@@ -42,7 +44,7 @@ const Verify = () => {
   return (
     <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors relative' >
       <Navbar />
-      <div className="max-w-screen-xl mx-auto min-h-screen px-4 md:px-10 flex flex-col justify-center items-center mb-16" >
+      <div className="max-w-screen-xl mx-auto min-h-screen px-4 md:px-10 flex flex-col justify-center items-center pb-16" >
         <h1 className=" text-3xl sm:text-4xl md:text-5xl font-semibold text-primary" >Verify Account</h1>
         <p className=" sm:text-lg md:text-xl mt-1.5 ms:mt-3 font-medium text-slate-800 dark:text-slate-200 text-center" >Please verify your account using the verification link sent to your email address.</p>
         <div className="flex gap-5 mt-5" >
