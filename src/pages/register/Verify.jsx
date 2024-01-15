@@ -47,7 +47,7 @@ const Verify = () => {
 
   // redirecting confirmed user to dashboard
   useEffect(() => {
-    if (user.email_confirmed) {
+    if (user?.email_confirmed) {
       navigate("/dashboard")
     }
   }, [navigate, user])
