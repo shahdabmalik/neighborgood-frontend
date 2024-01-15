@@ -9,8 +9,11 @@ import axios from "axios"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { SET_USER } from "../../redux/features/auth/authSlice"
+import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers"
 
 const InterestsForm = () => {
+
+    useRedirectLoggedOutUsers()
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
