@@ -46,7 +46,7 @@ const InterestsForm = () => {
             }
             try {
                 setIsLoading(true)
-                const response = await axios.post("/update_interests", JSON.stringify(formData), {
+                const response = await axios.post("/update_interests/", JSON.stringify(formData), {
                     headers: { Authorization: `Token ${token}` }
                 })
                 dispatch(SET_USER(response?.data?.user))

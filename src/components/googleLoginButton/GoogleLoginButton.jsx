@@ -33,7 +33,7 @@ const GoogleLoginButton = () => {
                 email: userObj.email,
                 picture: userObj.picture
             }
-            const { data } = await axios.post("/google_login", userData)
+            const { data } = await axios.post("/google_login/", userData)
             dispatch(SET_USER(data?.user))
             dispatch(SET_LOGIN(true))
             window.localStorage.setItem('token', data?.token)
