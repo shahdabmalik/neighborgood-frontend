@@ -13,8 +13,8 @@ import Verify from "./pages/register/Verify"
 import Verification from "./pages/register/Verification"
 import GetStarted from "./pages/getStarted/GetStarted"
 
-// axios.defaults.baseURL = "https://neighborgood-s0cq.onrender.com"
-axios.defaults.baseURL = "http://127.0.0.1:7000/"
+axios.defaults.baseURL = "https://neighborgood-kxtn.onrender.com"
+// axios.defaults.baseURL = "http://127.0.0.1:7000/"
 axios.defaults.withCredentials = true
 
 function App() {
