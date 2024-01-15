@@ -6,7 +6,7 @@ import SecondStep from "./SecondStep"
 import { Oval } from "react-loader-spinner"
 import toast from "react-hot-toast"
 import axios from "axios"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { SET_USER } from "../../redux/features/auth/authSlice"
 import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers"
@@ -14,7 +14,7 @@ import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUse
 const InterestsForm = () => {
 
     useRedirectLoggedOutUsers()
-
+    const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -25,10 +25,13 @@ const InterestsForm = () => {
     const totalSteps = 2;
     const token = window.localStorage.getItem('token')
 
-    // get loction call
+    // get loction call and redirect user to dashoboar if interests already given
     useEffect(() => {
         getLocation()
-    }, [])
+        if (user?.interests_updated) {
+            navigate("/dashboard")
+        }
+    }, [navigate, user])
 
     const onSubmit = async (data) => {
         if (currentStep < totalSteps) {
@@ -105,17 +108,17 @@ const InterestsForm = () => {
                             <div className={"mt-8 flex items-center " + (currentStep === 1 ? " justify-end " : " justify-between ")} >
                                 {currentStep > 1 && <button onClick={() => setCurrentStep(currentStep - 1)} type="button" className="h-10 w-32 bg-white font-semibold dark:bg-slate-950 border rounded border-primary hover:bg-slate-100 dark:hover:bg-slate-900" >Back</button>}
                                 <button type="submit"
-                                    className="h-10 w-32 bg-primary font-semibold rounded hover:bg-primary-dark text-white dark:text-black"
+                                    className="h-10 w-32 bg-primary font-semibold rounded hover:bg-primary-dark text-white dark:text-black flex items-center justify-center"
                                 >{!isLoading ? (currentStep === 1 ? "Next" : "Finish") :
                                     <Oval
                                         height={24}
                                         width={24}
-                                        color="#ff7800"
+                                        color="#ffffff"
                                         wrapperStyle={{}}
                                         wrapperClass=""
                                         visible={true}
                                         ariaLabel='oval-loading'
-                                        secondaryColor="#ff7800"
+                                        secondaryColor="#ffffff"
                                         strokeWidth={4}
                                         strokeWidthSecondary={3}
                                     />}</button>

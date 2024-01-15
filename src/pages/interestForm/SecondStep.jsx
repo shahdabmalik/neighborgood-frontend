@@ -36,7 +36,7 @@ const SecondStep = () => {
                 questionKey={"repairAdvice"}
                 questionTwo={"What kind of repair advice are you comfortable providing?"}
                 options={["Electrical Fixes", "Plumbing Tips", "Tech Support", "Home Appliance Repairs"]}
-                optionsKey={"repairAdviveType"}
+                optionsKey={"repairAdviceType"}
             />
             <Question
                 question={"Are you interested in sharing your knowledge through tutoring?"}

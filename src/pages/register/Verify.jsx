@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Navbar from "../../components/navbar/Navbar"
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUsers";
+import { useSelector } from "react-redux";
 
 const Verify = () => {
 
   useRedirectLoggedOutUsers()
+
+  const navigate = useNavigate()
+  const { user } = useSelector(state => state.auth)
   const [timeLeft, setTimeLeft] = useState(120);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const token = window.localStorage.getItem('token')
@@ -40,6 +44,14 @@ const Verify = () => {
       toast.error(message)
     }
   }
+
+  // redirecting confirmed user to dashboard
+  useEffect(() => {
+    if (user.email_confirmed) {
+      navigate("/dashboard")
+    }
+  }, [navigate, user])
+
 
   return (
     <div className='w-full bg-white dark:bg-slate-950 transition-none md:transition-colors relative' >

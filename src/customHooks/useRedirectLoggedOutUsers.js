@@ -21,6 +21,14 @@ const useRedirectLoggedOutUsers = async () => {
                 dispatch(SET_USER(data?.user))
                 dispatch(SET_LOGIN(true))
                 dispatch(SET_AUTH_LOADING(false))
+                if (!data?.user?.email_confirmed) {
+                    navigate("/verify")
+                    return
+                }
+                if (!data?.user?.interests_updated) {
+                    navigate("/interests")
+                    return
+                }
             } catch (error) {
                 dispatch(SET_AUTH_LOADING(false))
                 console.log(error);
