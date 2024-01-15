@@ -41,7 +41,7 @@ const SecondStep = () => {
             <Question
                 question={"Are you interested in sharing your knowledge through tutoring?"}
                 questionKey={"tutoring"}
-                questionTwo={"What kind of repair advice are you comfortable providing?"}
+                questionTwo={"Which subjects are you comfortable in providing tution?"}
                 options={["Mathematics", "Science", "Language Arts", "Computer Skills", "Music Lessons"]}
                 optionsKey={"tutoringType"}
             />
