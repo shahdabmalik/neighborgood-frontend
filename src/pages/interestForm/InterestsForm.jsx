@@ -16,18 +16,34 @@ const InterestsForm = () => {
     const navigate = useNavigate()
 
     const methods = useForm()
+    const [location, setLocation] = useState(null)
     const [currentStep, setCurrentStep] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
     const totalSteps = 2;
     const token = window.localStorage.getItem('token')
 
+    // get loction call
+    useEffect(() => {
+        getLocation()
+    }, [])
+
     const onSubmit = async (data) => {
         if (currentStep < totalSteps) {
             setCurrentStep(currentStep + 1)
         } else {
+
+            if (!location) {
+                getLocation()
+                return
+            }
+            const formData = {
+                ...data,
+                latitude: location?.latitude || null,
+                longitude: location?.longitude || null
+            }
             try {
                 setIsLoading(true)
-                const response = await axios.post("/", JSON.stringify(data), {
+                const response = await axios.post("/", JSON.stringify(formData), {
                     headers: { Authorization: `Token ${token}` }
                 })
                 dispatch(SET_USER(response?.data?.user))
@@ -45,6 +61,24 @@ const InterestsForm = () => {
     useEffect(() => {
         window.scroll(0, 0)
     }, [currentStep])
+
+    // get location function
+    function getLocation() {
+        if (!navigator.geolocation) {
+            toast.error("Get Location is not supported by the browser")
+        }
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLocation({
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+            });
+        }, () => {
+            toast.error("Please provide location access. It is mandatory for finding matches", {
+                duration: 8000
+            })
+        }
+        );
+    }
 
 
     return (

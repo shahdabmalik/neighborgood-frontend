@@ -56,12 +56,12 @@ const GoogleLoginButton = () => {
         // eslint-disable-next-line no-undef
         google.accounts.id.renderButton(
             document.getElementById('signIn'),
-            { size: 'fill', shape: 'rounded' }
+            { shape: 'rounded', size: 'fill', width: "316", text:"Continue with Google" }
         );
     }
 
     return (
-        <div className="flex justify-center items-center w-full" id="signIn" ></div>
+        <div className="w-full" id="signIn" ></div>
     )
 }
 

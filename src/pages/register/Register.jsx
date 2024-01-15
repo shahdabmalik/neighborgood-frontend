@@ -12,33 +12,13 @@ const Register = () => {
 
     const navigate = useNavigate()
     document.title = "Register - Neighborgood"
-    const [location, setLocation] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const { register, handleSubmit, control, watch, formState: { errors } } = useForm()
     const password = watch('password')
 
-    // get loction call
     useEffect(() => {
-        getLocation()
         window.scroll(0, 0)
     }, [])
-    // get location function
-    function getLocation() {
-        if (!navigator.geolocation) {
-            toast.error("Get Location is not supported by the browser")
-        }
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLocation({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-            });
-        }, () => {
-            toast.error("Please provide location access. It is mandatory for finding matches", {
-                duration: 8000
-            })
-        }
-        );
-    }
 
     const onSubmit = async (data) => {
         // data from form
@@ -51,14 +31,6 @@ const Register = () => {
             countryCode: data.countryCode?.value,
             mobile: data.mobile,
             profile: data.profile[0] || null,
-            latitude: location?.latitude || null,
-            longitude: location?.longitude || null
-        }
-        console.log(formData);
-
-        if (!location) {
-            getLocation()
-            return
         }
         // Api Request
         try {
