@@ -42,7 +42,7 @@ const Profile = () => {
                             {user?.gardening?.interested && <Activity activityName={"Gardening:"} activity={user?.gardening?.details} />}
                             {user?.swimming?.interested && <Activity activityName={"Swimming:"} activity={user?.swimming?.details} />}
                             {user?.coffeeTea?.interested && <Activity activityName={"Coffee / Tea Breaks:"} activity={user?.coffeeTea?.details} />}
-                            {user?.art?.interested && <Activity activityName={"Art:"} activity={user?.artType} />}
+                            {user?.art?.interested && <Activity activityName={"Art:"} activity={user?.art?.details} />}
                             {user?.foodGathering?.interested && <Activity activityName={"Food Gatherings:"} activity={user?.foodGathering?.details} />}
                             {user?.sportsports?.interested && <Activity activityName={"Television Sports:"} activity={user?.sports?.details} />}
                             {user?.movies?.interested && <Activity activityName={"Movies:"} activity={user?.movies?.details} />}
