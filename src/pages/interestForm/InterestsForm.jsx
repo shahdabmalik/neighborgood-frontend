@@ -17,17 +17,14 @@ const InterestsForm = () => {
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const methods = useForm()
-    const [location, setLocation] = useState(null)
     const [currentStep, setCurrentStep] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
     const totalSteps = 2;
     const token = window.localStorage.getItem('token')
 
-    // get loction call and redirect user to dashoboar if interests already given
+    // redirect user to dashoboar if interests already given
     useEffect(() => {
-        getLocation()
         if (user?.interests_updated) {
             navigate("/dashboard")
         }
@@ -37,19 +34,9 @@ const InterestsForm = () => {
         if (currentStep < totalSteps) {
             setCurrentStep(currentStep + 1)
         } else {
-
-            if (!location) {
-                getLocation()
-                return
-            }
-            const formData = {
-                ...data,
-                latitude: location?.latitude || null,
-                longitude: location?.longitude || null
-            }
             try {
                 setIsLoading(true)
-                const response = await axios.post("/update_interests/", JSON.stringify(formData), {
+                const response = await axios.post("/update_interests/", JSON.stringify(data), {
                     headers: { Authorization: `Token ${token}` }
                 })
                 dispatch(SET_USER(response?.data?.user))
@@ -68,25 +55,6 @@ const InterestsForm = () => {
         window.scroll(0, 0)
     }, [currentStep])
 
-    // get location function
-    function getLocation() {
-        if (!navigator.geolocation) {
-            toast.error("Get Location is not supported by the browser")
-        }
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLocation({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-            });
-        }, () => {
-            toast.error("Please provide location access. It is mandatory for finding matches", {
-                duration: 8000
-            })
-        }
-        );
-    }
-
-
     return (
         <div className='w-full bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-300 transition-none md:transition-colors relative' >
             <Navbar />
@@ -95,7 +63,8 @@ const InterestsForm = () => {
                 <p className=" text-sm xs:text-base mt-1.5 text-color-brown dark:text-color-light" >
                     {currentStep === 1 ? "Your interests are the key to meaningful connections. Select them carefully to find someone who truly complements you." :
                         "Every little help counts! Select the ways you’re ready to pitch in and enrich our neighborhood’s sense of togetherness and cooperation."
-                    }</p>
+                    }
+                </p>
                 <div className="grid grid-cols-2 gap-4 md:gap-8 mt-8 px-0.5" >
                     <div className="h-1.5 bg-primary rounded-full w-full" ></div>
                     <div className={"h-1.5 rounded-full w-full " + (currentStep === totalSteps ? " bg-primary " : " bg-slate-200 dark:bg-slate-800 ")} ></div>

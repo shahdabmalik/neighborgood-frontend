@@ -26,7 +26,7 @@ const GetStarted = () => {
                             </div>
                             <GoogleLoginButton />
                         </div>
-                        <Link className="text-blue-500 font-medium text-center" to={"#"} >Forget Password?</Link>
+                        <Link className="text-blue-500 font-medium text-center" to={"#"} >Forgot Password?</Link>
                     </div>
                     <div className=" border border-s-0 border-primary hidden rounded-e-md max-w-md w-full shadow-xl md:flex items-center justify-center">
                         <img className=" w-full object-cover " src={getStartedImage} alt="login" />

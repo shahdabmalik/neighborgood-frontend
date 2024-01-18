@@ -9,6 +9,7 @@ import { SET_SIMILAR_USERS } from "../../redux/features/user/userSlice"
 import axios from "axios"
 // import toast from "react-hot-toast"
 import ProfileCardSkeleton from "../../components/profileCard/ProfileCardSkeleton"
+import InvitationButton from "../../components/invitationButton/InvitationButton"
 
 const Dashboard = () => {
 
@@ -29,8 +30,6 @@ const Dashboard = () => {
       } catch (error) {
         setIsLoading(false)
         console.log(error);
-        // const message = error.response.data.message || error.message
-        // toast.error(message)
       }
     }
     getUsers()
@@ -44,19 +43,30 @@ const Dashboard = () => {
       </Navbar>
       <div className="max-w-screen-2xl mx-auto px-4 md:px-10 py-24" >
         {isLoading && <h3 className="h-8 w-full max-w-xs rounded-full animate-pulse bg-slate-300 dark:bg-slate-700" ></h3>}
-        {!isLoading && similarUsers.length === 0 && <h3 className="text-3xl sm:text-4xl font-bold  text-color-brown dark:text-color-light transition-colors" >No Similar Users</h3>}
-        {!isLoading && similarUsers.length > 0 && <SubHeading text="Similar" colorText="Users" afterText="" />}
-        <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
-          {!isLoading ? similarUsers?.map((user) => (
-            <ProfileCard user={user} key={user?.id} />
-          )) : <>
+        {!isLoading && similarUsers.length === 0 && <h3 className="text-3xl sm:text-4xl font-bold  text-color-brown dark:text-color-light transition-colors" >No Similar Neighbors</h3>}
+        {!isLoading && similarUsers.length > 0 &&
+          <SubHeading text="Similar" colorText="Neighbors" afterText="" />
+        }
+        {isLoading ?
+          <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
             <ProfileCardSkeleton />
             <ProfileCardSkeleton />
             <ProfileCardSkeleton />
             <ProfileCardSkeleton />
             <ProfileCardSkeleton />
-          </>}
-        </div>
+          </div>
+          : similarUsers?.length > 0 ?
+            <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mt-10 " >
+              {similarUsers?.map((user) => (
+                <ProfileCard user={user} key={user?.id} />
+              ))}
+            </div>
+            :
+            <div className="mt-5" >
+              <p className="text-slate-700 dark:text-slate-300 mb-4 " >Looks like you{`'`}re a trailblazer in your area! We haven{`'`}t found other users nearby who share your interests yet. But don{`'`}t worry, the more the merrier! Invite your neighbors to join and discover the joy of shared hobbies and activities. Together, you can turn interests into fun community experiences. Click below to spread the word and start building your local circle of friends and enthusiasts!</p>
+              <InvitationButton />
+            </div>
+        }
       </div>
     </div>
   )
