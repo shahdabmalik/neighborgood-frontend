@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
 import axios from "axios"
+import { SET_LOGIN, SET_USER } from "../../redux/features/auth/authSlice"
 
 const Verification = () => {
 
@@ -15,8 +16,15 @@ const Verification = () => {
     async function verifyUser() {
       try {
         const response = await axios.post(`/confirm_email/${token}`)
-        toast.success(response?.data?.message)
-        navigate("/login")
+        if (response?.data?.user) {
+          SET_USER(response?.data?.user)
+          SET_LOGIN(true)
+          window.localStorage.setItem('token', response?.data?.token)
+          toast.success(response?.data?.message)
+          navigate("/interests")
+          return
+        }
+        return toast.error("Error verifying email")
       } catch (error) {
         console.log(error);
         const message = error.response.data.message || error.message
