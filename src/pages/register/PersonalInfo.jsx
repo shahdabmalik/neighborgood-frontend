@@ -20,6 +20,7 @@ const PersonalInfo = () => {
     const [isLoading, setIsLoading] = useState(false)
     const { register, handleSubmit, control, formState: { errors } } = useForm()
     const { user } = useSelector(state => state.auth)
+    const token = window.localStorage.getItem('token')
 
     useEffect(() => {
         window.scroll(0, 0)
@@ -43,7 +44,9 @@ const PersonalInfo = () => {
         // Api Request
         try {
             setIsLoading(true)
-            const response = await axios.post("/info/", formData)
+            const response = await axios.post("/info/", formData, {
+                headers: { Authorization: `Token ${token}` }
+            })
             toast.success(response?.data?.message)
             window.localStorage.setItem('token', response?.data?.token)
             setIsLoading(false)
