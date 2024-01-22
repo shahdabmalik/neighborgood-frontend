@@ -15,8 +15,8 @@ import GetStarted from "./pages/getStarted/GetStarted"
 import PersonalInfo from "./pages/register/PersonalInfo"
 import SelectionPage from "./pages/register/SelectionPage"
 
-axios.defaults.baseURL = "https://neighborgood-kxtn.onrender.com"
-// axios.defaults.baseURL = "http://127.0.0.1:7000/"
+// axios.defaults.baseURL = "https://neighborgood-kxtn.onrender.com"
+axios.defaults.baseURL = "http://127.0.0.1:7000/"
 axios.defaults.withCredentials = true
 
 function App() {

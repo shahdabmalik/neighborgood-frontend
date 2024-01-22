@@ -13,7 +13,7 @@ import useRedirectLoggedOutUsers from "../../customHooks/useRedirectLoggedOutUse
 
 const InterestsForm = () => {
 
-    useRedirectLoggedOutUsers()
+    useRedirectLoggedOutUsers(true)
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()

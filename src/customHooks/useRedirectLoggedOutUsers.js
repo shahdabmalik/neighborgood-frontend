@@ -6,7 +6,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 
 
-const useRedirectLoggedOutUsers = async () => {
+const useRedirectLoggedOutUsers = async (isInterestPage) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -25,11 +25,13 @@ const useRedirectLoggedOutUsers = async () => {
                     navigate("/verify")
                     return
                 }
-                if(!data?.user?.zipCode){
+                if (!data?.user?.zipCode) {
                     navigate("/personal-info")
                     return
                 }
-                if (!data?.user?.interests_updated) {
+                if (isInterestPage) {
+                    return
+                } else if (!data?.user?.interests_updated) {
                     navigate("/select")
                     return
                 }
@@ -42,7 +44,7 @@ const useRedirectLoggedOutUsers = async () => {
             }
         }
         checkUser()
-    }, [dispatch, navigate, token])
+    }, [dispatch, navigate, token, isInterestPage])
 
 }
 
