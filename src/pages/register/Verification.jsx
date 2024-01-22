@@ -21,7 +21,7 @@ const Verification = () => {
           SET_LOGIN(true)
           window.localStorage.setItem('token', response?.data?.token)
           toast.success(response?.data?.message)
-          navigate("/interests")
+          navigate("/personal-info")
           return
         }
         return toast.error("Error verifying email")

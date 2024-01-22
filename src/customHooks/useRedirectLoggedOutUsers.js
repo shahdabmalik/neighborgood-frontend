@@ -25,8 +25,12 @@ const useRedirectLoggedOutUsers = async () => {
                     navigate("/verify")
                     return
                 }
+                if(!data?.user?.zipCode){
+                    navigate("/personal-info")
+                    return
+                }
                 if (!data?.user?.interests_updated) {
-                    navigate("/interests")
+                    navigate("/select")
                     return
                 }
             } catch (error) {

@@ -12,6 +12,8 @@ import InterestsForm from "./pages/interestForm/InterestsForm"
 import Verify from "./pages/register/Verify"
 import Verification from "./pages/register/Verification"
 import GetStarted from "./pages/getStarted/GetStarted"
+import PersonalInfo from "./pages/register/PersonalInfo"
+import SelectionPage from "./pages/register/SelectionPage"
 
 axios.defaults.baseURL = "https://neighborgood-kxtn.onrender.com"
 // axios.defaults.baseURL = "http://127.0.0.1:7000/"
@@ -30,6 +32,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/personal-info" element={<PersonalInfo />} />
+        <Route path="/select" element={<SelectionPage />} />
         <Route path="/interests" element={<InterestsForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />

@@ -55,10 +55,6 @@
     border-radius: 50%;
 }
 
-.terms-checkbox .cbx span:last-child {
-    padding-left: 8px;
-}
-
 .terms-checkbox .cbx:hover span:first-child {
     border-color: #ff7800;
 }
