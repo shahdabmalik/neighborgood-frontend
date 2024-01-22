@@ -25,7 +25,7 @@ const InvitationButton = () => {
     const onSubmit = async (data) => {
         try {
             setIsLoading(true)
-            const response = await axios.post("/", JSON.stringify(data), {
+            const response = await axios.post("/invitation_mail/", JSON.stringify(data), {
                 headers: { Authorization: `Token ${token}` }
             })
             toast.success(response?.data?.message)
