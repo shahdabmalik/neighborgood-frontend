@@ -11,9 +11,8 @@ const InvitationButton = () => {
 
     let [isOpen, setIsOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const { register, handleSubmit, formState: { errors } } = useForm()
-
-    console.log(errors);
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
+    const token = window.localStorage.getItem('token')
 
     function closeModal() {
         setIsOpen(false)
@@ -26,9 +25,13 @@ const InvitationButton = () => {
     const onSubmit = async (data) => {
         try {
             setIsLoading(true)
-            const response = await axios.post("/", JSON.stringify(data))
+            const response = await axios.post("/", JSON.stringify(data), {
+                headers: { Authorization: `Token ${token}` }
+            })
             toast.success(response?.data?.message)
+            setValue('email', "")
             setIsLoading(false)
+            closeModal()
         } catch (error) {
             setIsLoading(false)
             console.log(error);

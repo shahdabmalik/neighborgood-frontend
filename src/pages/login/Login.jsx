@@ -31,8 +31,12 @@ const Login = () => {
             if (!response?.data?.user?.email_confirmed) {
                 return navigate("/verify")
             }
+            if (!response?.data?.user?.zipCode) {
+                navigate("/personal-info")
+                return
+            }
             if (!response?.data?.user?.interests_updated) {
-                return navigate("/interests")
+                return navigate("/select")
             }
             // const response = await loginUser(data)
             navigate("/dashboard")
