@@ -14,6 +14,7 @@ import Verification from "./pages/register/Verification"
 import GetStarted from "./pages/getStarted/GetStarted"
 import PersonalInfo from "./pages/register/PersonalInfo"
 import SelectionPage from "./pages/register/SelectionPage"
+import Chat from "./pages/chat/Chat"
 
 // axios.defaults.baseURL =  "https://neighborgood-kxtn.onrender.com"
 axios.defaults.baseURL = import.meta.env.VITE_API_URL || "http://127.0.0.1:7000/"
@@ -35,6 +36,7 @@ function App() {
         <Route path="/personal-info" element={<PersonalInfo />} />
         <Route path="/select" element={<SelectionPage />} />
         <Route path="/interests" element={<InterestsForm />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/terms" element={<TermsAndConditions />} />

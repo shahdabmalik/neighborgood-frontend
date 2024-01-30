@@ -1,0 +1,130 @@
+
+.Chat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 10rem;
+    max-height: 90vh;
+    
+}
+
+.chats {
+    flex-grow: 1; /* Grow to fill available space */
+    overflow: hidden;/* Allow scrolling when chat content overflows */
+     overflow-y: scroll; 
+     scroll-behavior: smooth;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    max-width: 70rem;
+    max-height: 70vh;
+}
+.chat{
+    
+    /* padding-bottom: 1rem; */
+    font-size: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+}
+
+.chatimg{
+    object-fit: cover;
+    width: 3.5rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
+}
+.bot{
+    background: rgb(48, 48, 48);
+    /* width: fit-content; */
+    border-radius: 0.5rem;
+}
+
+.chatFooter{
+    margin-top: 500px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.inp{
+    padding: 0.5rem;
+    background-color: rgb(61, 61, 61);
+    display: flex;
+    border-radius: 0.5rem;
+    width: 50rem;
+}
+
+.inp>input{
+    width: 100%;
+    outline: none;
+    padding: 1.25rem;
+    color: white;
+    
+}
+
+.inp>input,.send{
+    background: transparent;
+    border: none;
+    cursor:pointer;
+}
+
+@media (max-width: 768px) {
+    .Chat {
+        margin: 2rem 0.05rem 2rem 3rem ;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-end;
+        min-height:92.5vh
+    }
+
+    .chats {
+        max-width: none; /* Adjusted max-width for mobile view */
+        width: 100%;
+        flex-grow: 1; /* Grow to fill available space */
+        overflow: hidden;/* Allow scrolling when chat content overflows */
+        overflow-y: scroll; 
+        scroll-behavior: smooth;
+        margin-right: 0.09rem;
+        /* align-items: flex-end; */
+    }
+
+    .inp {
+        width: 110%;
+        margin: 2rem 0.05rem 2rem 3rem
+    }
+
+    .chatFooter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed; /* Position the footer fixed on the screen */
+        bottom: 5%;/* Align the footer to the bottom of the screen */
+        left: 0; /* Align the footer to the left of the screen */
+        right: 0; /* Align the footer to the right of the screen */
+        margin: auto; /* Center the footer horizontally */
+        width: 70%; /* Adjusted width for mobile view */
+        padding: 20px; /* Add padding for the footer */
+    }
+
+    .inp > input {
+        padding: 1rem; /* Adjusted padding for mobile view */
+    }
+     .sidebar {
+        width: 60%;
+        height: auto; /* Adjusted width for mobile view */
+    } 
+    .chat{
+    
+        /* padding-bottom: 1rem; */
+        font-size: 0.95rem;
+        display: flex;
+        text-align: left;
+    }
+    
+}
