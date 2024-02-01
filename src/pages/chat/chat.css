@@ -1,0 +1,151 @@
+
+.Chat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 10rem;
+    max-height: 90vh;
+    
+}
+
+.chats {
+    flex-grow: 1; /* Grow to fill available space */
+    overflow: hidden;/* Allow scrolling when chat content overflows */
+     overflow-y: scroll; 
+     scroll-behavior: smooth;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    max-width: 70rem;
+    max-height: 70vh;
+}
+.chat{
+    
+    /* padding-bottom: 1rem; */
+    font-size: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+    background: rgb(16, 16, 16);
+}
+
+.chatimg{
+    object-fit: cover;
+    width: 3.5rem;
+    margin-right: 2rem;
+    border-radius: 0.5rem;
+}
+.bot{
+    background: rgb(48, 48, 48);
+    /* width: fit-content; */
+    border-radius: 0.5rem;
+}
+
+.chatFooter{
+    margin-top: 75vh;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.inp{
+    padding: 0.5rem;
+    background-color: rgb(61, 61, 61);
+    display: flex;
+    border-radius: 0.5rem;
+    width: 50rem;
+}
+
+.inp>input{
+    width: 100%;
+    outline: none;
+    padding: 1.25rem;
+    color: white;
+    
+}
+
+.inp>input,.send{
+    background: transparent;
+    border: none;
+    cursor:pointer;
+}
+
+@media (max-width: 768px) {
+    .Chat {
+        padding: 10px;
+        max-height: 70vh;
+        margin-top: 50px;
+    }
+
+    .chats {
+        /* Modify the chat display for a smaller screen */
+        padding: 5px;
+    }
+
+    .chat {
+        /* Adjust each chat bubble for smaller screens */
+        font-size: 14px; /* Smaller text */
+        margin: 5px 0; /* Less space between messages */
+    }
+
+    .chat .chatimg {
+        width: 30px; /* Smaller image/icons */
+        height: 30px;
+    }
+
+    .chatFooter {
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 75vh;
+        
+    }
+
+    .chatFooter .inp {
+        display: flex;
+        width: 100%;
+    }
+
+    .chatFooter input {
+        /* Make the input field more mobile-friendly */
+        flex-grow: 1; /* Allow input to fill space */
+        font-size: 16px; /* Bigger font for easier reading */
+        padding: 10px; /* Bigger padding for easier interaction */
+    }
+
+    .chatFooter .send {
+        /* Adjust the send button for mobile */
+        margin-left: 10px;
+        padding: 10px;
+    }
+
+    .chatFooter .send img {
+        width: 25px; /* Adjust the size of send button image */
+        height: 25px;
+    }
+}
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  .chatFooter {
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80vh;
+    
+}
+}
