@@ -13,31 +13,21 @@ const Chat = () => {
       {
         text: "Hi I am assistant. I will help you to find your matching interest nearby..",
         isBot: true
+      },
+      {
+        text:"User input",
+        isBot:false
       }
     ]);
   
-    const debouncedSaveContext = useCallback(debounce(async (inputValue) => {
-      const newHistory = [...chatHistory, { input: inputValue, isBot: false }];
-      setChatHistory(newHistory);
-      await memory.saveContext(
-        newHistory.reduce((acc, item) => acc + item.text + '\n', ''),
-        { output: "" }
-      );
-    }, 1000), [chatHistory]); 
+
   
   const handleInputChange = (event) => { 
     const inputValue = event.target.value;
     setInput(inputValue);
-    debouncedSaveContext(inputValue);
+
   }
-  function debounce(func, wait) {
-    let timeout;
-    return function(...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-  }
+
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -53,10 +43,6 @@ const Chat = () => {
       { text: response.text, isBot: true }
     ];
     setChatHistory(newHistory);
-    await memory.saveContext(
-      newHistory.reduce((acc, item) => acc + item.text + '\n', ''),
-      { output: response.text }
-    );
   }
   
     const handleEnter =async(e)=>{
@@ -75,7 +61,8 @@ const Chat = () => {
         <NavbarLink pageLink={true} path={"/"} name={"Home"} />
         <NavbarLink pageLink={true} path={"/profile"} name={"Profile"} />
       </Navbar>
-          <div className="chats">
+          
+      <div className="chats">
               {chatHistory.map((message, i) => // Changed 'answer' to 'chatHistory'
                   <div key={i}>
                       <div className={message.isBot ? "chat bot" : "chat"}>
@@ -86,6 +73,7 @@ const Chat = () => {
                   </div>
               )}
           </div>
+          
           <div className="chatFooter">
               <div className="inp">
                   <input value={input}
