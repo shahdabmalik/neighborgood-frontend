@@ -75,56 +75,59 @@
 
 @media (max-width: 768px) {
     .Chat {
-        margin: 2rem 0.05rem 2rem 3rem ;
-        display: flex;
-        flex-direction: column;
-        align-items:flex-end;
-        min-height:92.5vh
+        padding: 10px;
+        max-height: 60vh;
+        margin-top: 50px;
     }
 
     .chats {
-        max-width: none; /* Adjusted max-width for mobile view */
-        width: 100%;
-        flex-grow: 1; /* Grow to fill available space */
-        overflow: hidden;/* Allow scrolling when chat content overflows */
-        overflow-y: scroll; 
-        scroll-behavior: smooth;
-        margin-right: 0.09rem;
-        /* align-items: flex-end; */
+        /* Modify the chat display for a smaller screen */
+        padding: 5px;
     }
 
-    .inp {
-        width: 110%;
-        margin: 2rem 0.05rem 2rem 3rem
+    .chat {
+        /* Adjust each chat bubble for smaller screens */
+        font-size: 14px; /* Smaller text */
+        margin: 5px 0; /* Less space between messages */
+    }
+
+    .chat .chatimg {
+        width: 30px; /* Smaller image/icons */
+        height: 30px;
     }
 
     .chatFooter {
+        padding: 10px;
+        position: fixed;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position: fixed; /* Position the footer fixed on the screen */
-        bottom: 5%;/* Align the footer to the bottom of the screen */
-        left: 0; /* Align the footer to the left of the screen */
-        right: 0; /* Align the footer to the right of the screen */
-        margin: auto; /* Center the footer horizontally */
-        width: 70%; /* Adjusted width for mobile view */
-        padding: 20px; /* Add padding for the footer */
+        margin-top: 500px;
+        
     }
 
-    .inp > input {
-        padding: 1rem; /* Adjusted padding for mobile view */
-    }
-     .sidebar {
-        width: 60%;
-        height: auto; /* Adjusted width for mobile view */
-    } 
-    .chat{
-    
-        /* padding-bottom: 1rem; */
-        font-size: 0.95rem;
+    .chatFooter .inp {
         display: flex;
-        text-align: left;
+        width: 100%;
     }
-    
+
+    .chatFooter input {
+        /* Make the input field more mobile-friendly */
+        flex-grow: 1; /* Allow input to fill space */
+        font-size: 16px; /* Bigger font for easier reading */
+        padding: 10px; /* Bigger padding for easier interaction */
+    }
+
+    .chatFooter .send {
+        /* Adjust the send button for mobile */
+        margin-left: 10px;
+        padding: 10px;
+    }
+
+    .chatFooter .send img {
+        width: 25px; /* Adjust the size of send button image */
+        height: 25px;
+    }
 }
